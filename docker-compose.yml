@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+
+  web:
+    build: .
+    container_name: foodorder-web
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8
+    container_name: foodorder-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: foodorder
+    ports:
+      - "3306:3306"
